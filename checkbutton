@@ -1,0 +1,59 @@
+import tkinter as tk
+
+
+root = tk.Tk()
+root.title("Checkbutton Example")
+
+#product prices
+coke_price = 1.50
+pepsi_price = 1.25
+water_price = 1.25
+
+# function to keep track of the items that are selected and their prices
+
+def item_and_prices():
+  total_price = 0
+
+  list_of_items = []
+
+  if coke_var.get():
+    list_of_items.append("Coke")
+    total_price = total_price+coke_price
+  if pepsi_var.get():
+    list_of_items.append("Pepsi")
+    total_price +=pepsi_price
+  if water_var.get():
+    list_of_items.append("Water")
+    total_price +=water_price
+
+  item_seleced.config(text="You have selected:"+str(list_of_items))
+  total_price_display.config(text=f"Total Price: ${total_price}")
+  
+    
+  
+
+
+  
+
+coke_var = tk.IntVar()
+pepsi_var = tk.IntVar()
+water_var = tk.IntVar()
+
+
+coke = tk.Checkbutton(root,text="Coke",variable = coke_var,command=item_and_prices)
+pepsi = tk.Checkbutton(root,text="Pepsi",variable = pepsi_var,command=item_and_prices)
+water = tk.Checkbutton(root,text="Water",variable = water_var,command=item_and_prices)
+
+item_seleced = tk.Label(text="You have selected:")
+total_price_display = tk.Label(text="Total Price: $")
+
+
+#grid geometry manager
+coke.grid(sticky="w")
+pepsi.grid(sticky="w")
+water.grid(sticky="w")
+item_seleced.grid(sticky="w")
+total_price_display.grid(sticky="w")
+
+
+root.mainloop()
